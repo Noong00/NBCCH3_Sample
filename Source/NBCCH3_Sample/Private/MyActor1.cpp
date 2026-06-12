@@ -3,6 +3,8 @@
 
 #include "MyActor1.h"
 
+#include "Math/TransformCalculus3D.h"
+
 // Sets default values
 AMyActor1::AMyActor1()
 {
@@ -19,8 +21,9 @@ AMyActor1::AMyActor1()
 	
 	//tick함수 활성화
 	PrimaryActorTick.bCanEverTick = true;
-	RotationSpeed = 100.0f;
-	MaxScale = true;
+	RotationSpeed = 0.0f;
+	IsMaxScale = true;
+	MaxScale = 0.0f;
 }
 
 // Called when the game starts or when spawned
@@ -43,20 +46,20 @@ void AMyActor1::Tick(float DeltaTime)
 	//크기가 커졌다 작아졌다
 	FVector CurrentScale = GetActorScale3D();
 	
-	if (MaxScale)
+	if (IsMaxScale)
 	{
-		SetActorScale3D(CurrentScale + FVector(0.1f, 0.1f, 0.1f));
-		if (CurrentScale.X >= 100.0f)
+		SetActorScale3D(CurrentScale + FVector(0.001, 0.001, 0.001));
+		if (CurrentScale.X >= MaxScale)
 		{
-			MaxScale = false;
+			IsMaxScale = false;
 		}
 	}
 	else
 	{
-		SetActorScale3D(CurrentScale - FVector(0.1f, 0.1f, 0.1f));
-		if (CurrentScale.X <= 1.0f)
+		SetActorScale3D(CurrentScale - FVector(0.001, 0.001, 0.001));
+		if (CurrentScale.X <= 0.5f)
 		{
-			MaxScale = true;
+			IsMaxScale = true;
 		}
 	}
 }

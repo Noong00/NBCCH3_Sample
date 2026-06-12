@@ -58,7 +58,7 @@ void AMyActor2::Tick(float DeltaTime)
 		
 		SetActorLocation(GetActorLocation()-NormalizedFrameMovement);
 		
-		if (FVector::Dist(StartLocation, GetActorLocation()) >= 10.0f)
+		if (FVector::Dist(StartLocation, GetActorLocation()) >= MoveRange)
 		{
 			SetActorLocation(StartLocation-TargetDirection);
 			

@@ -28,9 +28,11 @@ protected:
 	//멤버변수
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AMyActor1|Properties")
 	float RotationSpeed;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AMyActor1|Properties")
+	bool IsMaxScale;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AMyActor1|Properties")
-	bool MaxScale;
-	
+	float MaxScale;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
